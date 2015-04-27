@@ -1,13 +1,14 @@
 /**
- * Created by raymons on 27-3-15.
+ * Basic application config
  */
-(function(window, document, undefined) {
+(function(window, document, Masonry, undefined) {
     console.log('loaded');
-})(window, document);
 
-var ngRouteApp = angular.module("ngRouteApp", ['ngRoute']);
+})(window, document, Masonry);
 
-ngRouteApp.config(function($routeProvider, $locationProvider) {
+var app = angular.module("ngRouteApp", ['ngRoute', 'ngResource']);
+
+app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '../views/home.html'
@@ -20,6 +21,10 @@ ngRouteApp.config(function($routeProvider, $locationProvider) {
         })
         .when('/contact', {
             templateUrl: '../views/contact.html'
+        })
+        .when('/tweets', {
+            templateUrl: '../views/tweets.html',
+            controller: 'TweetController'
         })
         .otherwise({
             redirectTo: '/'

@@ -38,7 +38,11 @@ gulp.task('js',function(){
     gulp.src([
         'app/src/js/libs/angular.min.js',
         'app/src/js/libs/angular-route.min.js',
-        'app/src/js/app.js'
+        'app/src/js/libs/angular-resource.min.js',
+        'app/src/js/libs/masonry.min.js',
+        'app/src/js/app.js',
+        'app/src/js/factories/**/*.js',
+        'app/src/js/controllers/**/*.js'
     ])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/assets/js'))
@@ -47,6 +51,12 @@ gulp.task('js',function(){
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(browserSync.reload({stream:true, once: true}));
+});
+
+gulp.task('map',function(){
+    gulp.src('app/src/js/libs/*.map')
+        .pipe(gulp.dest('dist/assets/js'))
+        .pipe(browserSync.reload({stream:true, once: true}));
 });
 
 gulp.task('html',function(){
@@ -70,8 +80,8 @@ gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
-gulp.task('default', ['css', 'js', 'html', 'browser-sync'], function () {
+gulp.task('default', ['css', 'js', 'map', 'html', 'browser-sync'], function () {
     gulp.watch("app/src/sass/**/*.scss", ['css', 'bs-reload']);
-    gulp.watch("app/src/js/**/*.js", ['js', 'bs-reload']);
+    gulp.watch("app/src/js/**/*.js", ['js', 'map', 'bs-reload']);
     gulp.watch("app/**/*.html", ['html', 'bs-reload']);
 });

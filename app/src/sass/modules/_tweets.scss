@@ -1,0 +1,23 @@
+ul.tweets {
+  list-style: none;
+  padding:  0 0 0 0;
+  overflow-x: hidden;
+  @extend %clear;
+  width: 100%;
+  height: auto;
+}
+
+.tweets li {
+  width: 25%;
+  float: left;
+  background: lighten($orange, 50%);
+  transition: .5s ease-in-out;
+  img {
+    max-width: 100%;
+  }
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 0 rgba($black, 0.75);
+    z-index: 10;
+  }
+}

@@ -475,7 +475,7 @@ h6 {
   h2, h3 {
     page-break-after: avoid; } }
 
-.full, .clear:before, .clear:after {
+.full, .clear:before, .clear:after, ul.tweets {
   content: ' ';
   display: table; }
 
@@ -484,12 +484,34 @@ h6 {
   .clear:after {
     clear: both; }
 
+ul.tweets {
+  list-style: none;
+  padding: 0 0 0 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto; }
+
+.tweets li {
+  width: 25%;
+  float: left;
+  background: white;
+  transition: 0.5s ease-in-out; }
+  .tweets li img {
+    max-width: 100%; }
+  .tweets li:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    box-shadow: 0 0 5px 0 rgba(51, 51, 51, 0.75);
+    z-index: 10; }
+
 .container {
   width: 100%;
   height: auto;
+  background: #ff8100; }
+
+.header {
   padding: 2em;
-  max-width: 800px;
-  margin: 0 auto;
   background: #fff; }
 
 .nav {
