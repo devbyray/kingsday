@@ -1,0 +1,17 @@
+.nav {
+  padding: 1em;
+  margin-bottom: 1em;
+  background: $black;
+  ul {
+  	margin: 0 0 0 0;
+  	padding: 0 0 0 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: .5em;
+      a {
+        color: $white;
+      }
+    }
+  }
+}
