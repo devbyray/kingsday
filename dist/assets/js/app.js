@@ -3432,19 +3432,19 @@ var app = angular.module("ngRouteApp", ['ngRoute', 'ngResource']);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '../views/home.html'
+            templateUrl: 'views/home.html'
         })
         .when('/home', {
             redirectTo: '/'
         })
         .when('/about', {
-            templateUrl: '../views/about.html'
+            templateUrl: 'views/about.html'
         })
         .when('/contact', {
-            templateUrl: '../views/contact.html'
+            templateUrl: 'views/contact.html'
         })
         .when('/tweets', {
-            templateUrl: '../views/tweets.html',
+            templateUrl: 'views/tweets.html',
             controller: 'TweetController'
         })
         .otherwise({
@@ -3456,21 +3456,13 @@ app.config(function($routeProvider, $locationProvider) {
  */
 
 app.factory("Tweet", function($resource) {
-    return $resource("http://raymons.webfactional.com/api/REST.php/twitter/:search");
+    return $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/:search");
 });
 /**
  * Twitter API factory does a call to the twitter API
  */
 
 app.controller("TweetController", function($scope, Tweet) {
-
-    Tweet.get({ search: 'kingsday' }, function(data) {
-        $scope.tweets = data.statuses;
-
-        setTimeout("masonLayout()",'100');
-
-
-    });
 
     $scope.keywords = ['kingsday','koningsdag','orangje', 'willem', 'nederland', '538,koningsdag', 'slam,koningsdag'];
 
@@ -3490,8 +3482,6 @@ app.controller("TweetController", function($scope, Tweet) {
         return keyWords;
     };
 
-    randomKeyword();
-
     $scope.loadNewData = function() {
         console.log('loading....');
 
@@ -3504,7 +3494,9 @@ app.controller("TweetController", function($scope, Tweet) {
             }
             setTimeout("masonLayout()",'100');
         });
-    }
+    };
+
+    $scope.loadNewData();
 
 });
 

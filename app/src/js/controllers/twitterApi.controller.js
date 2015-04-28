@@ -4,14 +4,6 @@
 
 app.controller("TweetController", function($scope, Tweet) {
 
-    Tweet.get({ search: 'kingsday' }, function(data) {
-        $scope.tweets = data.statuses;
-
-        setTimeout("masonLayout()",'100');
-
-
-    });
-
     $scope.keywords = ['kingsday','koningsdag','orangje', 'willem', 'nederland', '538,koningsdag', 'slam,koningsdag'];
 
     var randomKeyword = function() {
@@ -30,8 +22,6 @@ app.controller("TweetController", function($scope, Tweet) {
         return keyWords;
     };
 
-    randomKeyword();
-
     $scope.loadNewData = function() {
         console.log('loading....');
 
@@ -44,7 +34,9 @@ app.controller("TweetController", function($scope, Tweet) {
             }
             setTimeout("masonLayout()",'100');
         });
-    }
+    };
+
+    $scope.loadNewData();
 
 });
 

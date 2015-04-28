@@ -11,19 +11,19 @@ var app = angular.module("ngRouteApp", ['ngRoute', 'ngResource']);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '../views/home.html'
+            templateUrl: 'views/home.html'
         })
         .when('/home', {
             redirectTo: '/'
         })
         .when('/about', {
-            templateUrl: '../views/about.html'
+            templateUrl: 'views/about.html'
         })
         .when('/contact', {
-            templateUrl: '../views/contact.html'
+            templateUrl: 'views/contact.html'
         })
         .when('/tweets', {
-            templateUrl: '../views/tweets.html',
+            templateUrl: 'views/tweets.html',
             controller: 'TweetController'
         })
         .otherwise({

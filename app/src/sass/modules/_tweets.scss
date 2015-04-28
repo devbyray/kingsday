@@ -20,4 +20,7 @@ ul.tweets {
     box-shadow: 0 0 5px 0 rgba($black, 0.75);
     z-index: 10;
   }
+  @media screen and (max-width:480px) {
+    width: 100%;
+  }
 }

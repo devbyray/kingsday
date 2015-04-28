@@ -3,5 +3,5 @@
  */
 
 app.factory("Tweet", function($resource) {
-    return $resource("http://raymons.webfactional.com/api/REST.php/twitter/:search");
+    return $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/:search");
 });

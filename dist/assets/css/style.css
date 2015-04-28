@@ -504,6 +504,9 @@ ul.tweets {
             transform: scale(1.1);
     box-shadow: 0 0 5px 0 rgba(51, 51, 51, 0.75);
     z-index: 10; }
+  @media screen and (max-width: 480px) {
+    .tweets li {
+      width: 100%; } }
 
 .container {
   width: 100%;
