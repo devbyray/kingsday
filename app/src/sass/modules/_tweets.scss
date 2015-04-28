@@ -1,15 +1,18 @@
 ul.tweets {
+  min-height: 60px;
   list-style: none;
   padding:  0 0 0 0;
   overflow-x: hidden;
   @extend %clear;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  position: relative;
+  background: $orange url('../images/loader.gif') top center no-repeat;
 }
 
 .tweets li {
-  width: 25%;
-  float: left;
+  width: 33.33%;
   background: lighten($orange, 50%);
   transition: .5s ease-in-out;
   img {
@@ -23,4 +26,9 @@ ul.tweets {
   @media screen and (max-width:480px) {
     width: 100%;
   }
+}
+.loadNewData {
+  display: block;
+  padding: 1em;
+  width: 100%;
 }

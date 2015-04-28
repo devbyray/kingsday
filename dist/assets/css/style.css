@@ -485,15 +485,18 @@ h6 {
     clear: both; }
 
 ul.tweets {
+  min-height: 60px;
   list-style: none;
   padding: 0 0 0 0;
   overflow-x: hidden;
   width: 100%;
-  height: auto; }
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  background: #ff8100 url('../images/loader.gif') top center no-repeat; }
 
 .tweets li {
-  width: 25%;
-  float: left;
+  width: 33.33%;
   background: white;
   transition: 0.5s ease-in-out; }
   .tweets li img {
@@ -507,6 +510,11 @@ ul.tweets {
   @media screen and (max-width: 480px) {
     .tweets li {
       width: 100%; } }
+
+.loadNewData {
+  display: block;
+  padding: 1em;
+  width: 100%; }
 
 .container {
   width: 100%;

@@ -3424,6 +3424,9 @@ e.$validators.maxlength=function(a,c){return 0>f||e.$isEmpty(c)||c.length<=f}}}}
  */
 (function(window, document, Masonry, undefined) {
     console.log('loaded');
+    window.onresize = function(event) {
+        setTimeout("masonLayout()",'500');
+    };
 
 })(window, document, Masonry);
 
@@ -3451,12 +3454,15 @@ app.config(function($routeProvider, $locationProvider) {
             redirectTo: '/'
         });
 });
+
+
 /**
  * Twitter API factory does a call to the twitter API
  */
 
 app.factory("Tweet", function($resource) {
-    return $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/:search");
+    var result = $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/positive/:search");
+    return result;
 });
 /**
  * Twitter API factory does a call to the twitter API
@@ -3464,35 +3470,33 @@ app.factory("Tweet", function($resource) {
 
 app.controller("TweetController", function($scope, Tweet) {
 
-    $scope.keywords = ['kingsday','koningsdag','orangje', 'willem', 'nederland', '538,koningsdag', 'slam,koningsdag'];
+    $scope.keywords = ['koningsdag',  'oranje',  'koning',  'king',  'amsterdam',  'breda',  '538',  'slamfm'];
 
     var randomKeyword = function() {
         var maxNr = $scope.keywords.length;
-        var randomNr = Math.floor((Math.random() * maxNr) + 1);
-        var randomNr2 = Math.floor((Math.random() * maxNr) + 1);
+        var randomNr = Math.floor((Math.random() * maxNr));
         var keyWord = $scope.keywords[randomNr];
-        var keyWord2 = $scope.keywords[randomNr2];
 
-        var keyWords = keyWord + ',' + keyWord2;
 
-        console.log('maxNr: ', maxNr);
-        console.log('randomNr: ', randomNr);
-        console.log('keyWords: ', keyWords);
+        console.log('maxNr:', maxNr);
+        console.log('randomNr:', randomNr);
+        console.log('keyWords:', keyWord);
 
-        return keyWords;
+        return ':'+keyWord;
     };
 
     $scope.loadNewData = function() {
         console.log('loading....');
 
-        Tweet.get({ search: randomKeyword() }, function(data) {
-            if($scope.tweets && $scope.tweets.length > 0) {
-                $scope.tweets = $scope.tweets.concat(data.statuses);
-            }
-            else {
+        Tweet.get({ search: ':koningsdag' }, function(data) {
+            if(data.statuses) {
                 $scope.tweets = data.statuses;
+                setTimeout("masonLayout()",'200');
+            } else {
+                console.log('no data found');
             }
-            setTimeout("masonLayout()",'100');
+        }, function(error){
+            console.log('data niet gevonden');
         });
     };
 
@@ -3510,3 +3514,4 @@ function masonLayout() {
         });
     }
 }
+

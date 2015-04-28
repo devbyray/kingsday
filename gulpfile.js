@@ -68,6 +68,12 @@ gulp.task('html',function(){
         .pipe(browserSync.reload({stream:true, once: true}));
 });
 
+gulp.task('image',function(){
+    return gulp.src('app/src/images/*')
+        .pipe(gulp.dest('dist/assets/images/'))
+        .pipe(browserSync.reload({stream:true, once: true}));
+});
+
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
         server: {
@@ -80,7 +86,8 @@ gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
-gulp.task('default', ['css', 'js', 'map', 'html', 'browser-sync'], function () {
+gulp.task('default', ['image','css', 'js', 'map', 'html', 'browser-sync'], function () {
+    gulp.watch("app/src/images/*", ['image', 'bs-reload']);
     gulp.watch("app/src/sass/**/*.scss", ['css', 'bs-reload']);
     gulp.watch("app/src/js/**/*.js", ['js', 'map', 'bs-reload']);
     gulp.watch("app/**/*.html", ['html', 'bs-reload']);

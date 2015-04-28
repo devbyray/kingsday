@@ -3,6 +3,9 @@
  */
 (function(window, document, Masonry, undefined) {
     console.log('loaded');
+    window.onresize = function(event) {
+        setTimeout("masonLayout()",'500');
+    };
 
 })(window, document, Masonry);
 
@@ -30,3 +33,4 @@ app.config(function($routeProvider, $locationProvider) {
             redirectTo: '/'
         });
 });
+
