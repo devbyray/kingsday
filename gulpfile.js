@@ -40,6 +40,7 @@ gulp.task('js',function(){
         'app/src/js/libs/angular-route.min.js',
         'app/src/js/libs/angular-resource.min.js',
         'app/src/js/libs/masonry.min.js',
+        'app/src/js/helpers/**/*.js',
         'app/src/js/app.js',
         'app/src/js/factories/**/*.js',
         'app/src/js/controllers/**/*.js'

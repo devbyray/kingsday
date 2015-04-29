@@ -4,9 +4,9 @@
 
 app.controller("TweetController", function($scope, Tweet) {
 
-    $scope.keywords = ['koningsdag',  'oranje',  'koning',  'king',  'amsterdam',  'breda',  '538',  'slamfm'];
+    $scope.keywords = ['koningsdag',  'oranje',  'koning',  'king', '#538koningsdag', '#slamfm,#koningsdag'];
 
-    var randomKeyword = function() {
+    $scope.randomKeyword = function() {
         var maxNr = $scope.keywords.length;
         var randomNr = Math.floor((Math.random() * maxNr));
         var keyWord = $scope.keywords[randomNr];
@@ -22,7 +22,7 @@ app.controller("TweetController", function($scope, Tweet) {
     $scope.loadNewData = function() {
         console.log('loading....');
 
-        Tweet.get({ search: ':koningsdag' }, function(data) {
+        Tweet.get({ search: $scope.randomKeyword() }, function(data) {
             if(data.statuses) {
                 $scope.tweets = data.statuses;
                 setTimeout("masonLayout()",'200');
@@ -30,7 +30,7 @@ app.controller("TweetController", function($scope, Tweet) {
                 console.log('no data found');
             }
         }, function(error){
-            console.log('data niet gevonden');
+            console.log('get request stopt or could not find source');
         });
     };
 
@@ -47,5 +47,5 @@ function masonLayout() {
             itemSelector: '.tweetColumn'
         });
     }
-}
+};
 

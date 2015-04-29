@@ -1,8 +1,8 @@
 <h1>Kingsday 2015</h1>
 <div id="tweetsContainer">
     <ul class="tweets">
-        <li ng-repeat="tweet in tweets" class="tweetColumn" ng-show="tweet.entities.media && tweet.retweeted == false">
-            <div class="images">
+        <li ng-repeat="tweet in tweets" class="tweetColumn" ng-show="tweet.retweeted == false">
+            <div class="images" ng-show="tweet.entities.media">
                 <span ng-repeat="media in tweet.entities.media">
                     <img ng-show="media.type =='photo'" ng-src="{{media.media_url}}" alt=""/>
                 </span>
