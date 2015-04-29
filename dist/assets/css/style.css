@@ -329,7 +329,7 @@ body, html {
 
 html {
   line-height: 1.5;
-  background: #efefef; }
+  background: #fff; }
 
 body {
   color: #333;
@@ -493,31 +493,34 @@ ul.tweets {
   max-width: 100%;
   height: auto;
   position: relative;
-  background: #ff8100 url('../images/loader.gif') top center no-repeat; }
+  background: url('../images/loader.gif') top center no-repeat; }
 
-.tweets li {
+.tweets li.tweetColumn {
   width: 25%;
-  background: #ff8100;
-  color: #fff;
+  background: #fff;
+  color: #ff8100;
   transition: 0.5s ease-in-out; }
-  .tweets li img {
-    max-width: 100%; }
-  .tweets li:hover {
-    background: #fff;
-    color: #ff8100;
+  .tweets li.tweetColumn img {
+    width: 100%; }
+  .tweets li.tweetColumn .content ul {
+    list-style: none;
+    padding-left: 0; }
+    .tweets li.tweetColumn .content ul li {
+      display: inline; }
+  .tweets li.tweetColumn:hover {
     -webkit-transform: scale(1.05);
         -ms-transform: scale(1.05);
             transform: scale(1.05);
     box-shadow: 0 0 5px 0 rgba(51, 51, 51, 0.75);
     z-index: 10; }
   @media screen and (max-width: 1024px) {
-    .tweets li {
+    .tweets li.tweetColumn {
       width: 33.33%; } }
   @media screen and (max-width: 800px) {
-    .tweets li {
+    .tweets li.tweetColumn {
       width: 50%; } }
   @media screen and (max-width: 480px) {
-    .tweets li {
+    .tweets li.tweetColumn {
       width: 100%; } }
 
 .loadNewData {
@@ -528,9 +531,24 @@ ul.tweets {
 .container {
   width: 100%;
   height: auto;
-  background: #ff8100; }
-  .container h1 {
-    color: #fff; }
+  margin-top: 100px; }
+
+.top {
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: #ff8100;
+  z-index: 99;
+  box-shadow: 0 0 5px 5px rgba(51, 51, 51, 0.3); }
+  .top h1 {
+    color: #fff;
+    padding: 0.5em;
+    margin-bottom: 0; }
+    @media screen and (max-width: 480px) {
+      .top h1 {
+        font-size: 2em; } }
 
 .header {
   padding: 2em;

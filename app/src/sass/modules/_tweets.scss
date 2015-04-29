@@ -8,20 +8,27 @@ ul.tweets {
   max-width: 100%;
   height: auto;
   position: relative;
-  background: $orange url('../images/loader.gif') top center no-repeat;
+  background: url('../images/loader.gif') top center no-repeat;
 }
 
-.tweets li {
+.tweets li.tweetColumn {
   width: 25%;
-  background: $orange;
-  color: $white;
+  background: $white;
+  color: $orange;
   transition: .5s ease-in-out;
   img {
-    max-width: 100%;
+    width: 100%;
+  }
+  .content {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        display: inline;
+      }
+    }
   }
   &:hover {
-    background: $white;
-    color: $orange;
     transform: scale(1.05);
     box-shadow: 0 0 5px 0 rgba($black, 0.75);
     z-index: 10;

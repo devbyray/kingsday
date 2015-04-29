@@ -1,4 +1,3 @@
-<h1>Kingsday 2015</h1>
 <div id="tweetsContainer">
     <ul class="tweets">
         <li ng-repeat="tweet in tweets" class="tweetColumn" ng-show="tweet.retweeted == false">
@@ -9,6 +8,9 @@
             </div>
             <div class="content">
                 <p>{{tweet.text}}</p>
+                <ul ng-show="tweet.entities.hashtags == false">
+                    <li ng-repeat="hashtag in tweet.entities.hashtags"><a href="https://twitter.com/hashtag/{{hashtag.text}}" target="_blank">#{{hashtag.text}}</a></li>
+                </ul>
             </div>
         </li>
     </ul>

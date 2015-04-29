@@ -3470,7 +3470,7 @@ app.config(function($routeProvider, $locationProvider) {
  */
 
 app.factory("Tweet", function($resource) {
-    var result = $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/positive/:search");
+    var result = $resource("http://www.raymonschouwenaar.nl/kingsday2015/api/REST.php/twitter/:search");
     return result;
 });
 /**
@@ -3479,7 +3479,7 @@ app.factory("Tweet", function($resource) {
 
 app.controller("TweetController", function($scope, Tweet) {
 
-    $scope.keywords = ['koningsdag',  'oranje',  'koning',  'king', '#538koningsdag', '#slamfm,#koningsdag'];
+    $scope.keywords = ['koningsdag  2015',  'oranje',  'kingsday 2015', '#538koningsdag', '#slamfm,#koningsdag'];
 
     $scope.randomKeyword = function() {
         var maxNr = $scope.keywords.length;
@@ -3515,12 +3515,21 @@ app.controller("TweetController", function($scope, Tweet) {
 
 function masonLayout() {
     var msnContainer = document.querySelector('.tweets');
-    if(msnContainer) {
-        var msnry = new Masonry(msnContainer, {
-            // options
-            percentPosition: true,
-            itemSelector: '.tweetColumn'
-        });
+    if(window.outerWidth > 600) {
+        if (msnContainer) {
+            var msnry = new Masonry(msnContainer, {
+                // options
+                percentPosition: true,
+                itemSelector: '.tweetColumn'
+            });
+        }
+    } else {
+        if (msnContainer) {
+            var msnry = new Masonry(msnContainer, {
+                // options
+                containerStyle: null
+            });
+        }
     }
 };
 
